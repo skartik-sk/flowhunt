@@ -293,8 +293,8 @@ export default function SolveHuntPage() {
               disabled={
                 isVerifying ||
                 (currentClue.verificationMethod === "photo" && !verificationPhoto) ||
-                (currentClue.verificationMethod === "manual" && !verificationText.trim()) ||
-                (currentClue.unlockTime && new Date(currentClue.unlockTime) > new Date())
+                (currentClue.verificationMethod === "manual" && verificationText.trim() === "") ||
+                (currentClue.unlockTime ? new Date(currentClue.unlockTime) > new Date() : false)
               }
               className={`retro-button w-full mt-6 ${isVerifying ? "opacity-50 cursor-not-allowed" : ""}`}
             >
